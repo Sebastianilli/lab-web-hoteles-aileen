@@ -1,0 +1,95 @@
+<style>   
+  .error-message {color: red;}    
+  input.ng-dirty.ng-invalid {border-color: red;}  
+</style>
+
+<h1 align="center">{{ title }}</h1>
+  <hr/>
+    <p align="center"> Ingresa los datos que se te piden a continuación </p>
+  
+  <table align="center">
+    <tr>
+      <td>
+        <p align="center">Regístrate con Facebook:</p>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <a href="/auth/facebook" class="btn btn-primary btn-xl page-scroll" style="width:200px"><span class="fa fa-facebook"></span> Facebook</a>
+      </td>
+    </tr>
+  </table>
+  <br><br><br><br>
+  
+  <form action ="/sigueRegistro" method="post" name="myForm">
+    <table align="center" style="background-color:white;">
+      <tr>
+        <td>
+          <p><label for="label_id"> Nombre:</label></p>
+        </td>
+        <td>
+          <p><input id="label_id" type="text" name="nombre" size="35" placeholder="Nombre"/></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p><label for="label_nombre">Apellido Paterno:</label></p>
+        </td>
+        <td>
+          <p><input id="label_nombre" type="text" name="aPaterno" size="35" placeholder="Apellido Paterno"/></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p><label for="label_ciudad">Apellido Materno:</label></p>
+        </td>
+        <td>
+          <p><input id="label_ciudad" type="text" name="aMaterno" size="35" placeholder="Apellido Materno"/></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p><label for="label_correo">Correo:</label></p>
+        </td>
+        <td>
+          <p><input id="label_correo" type="email" name="correo" ng-model="correo" size="35" placeholder="Correo"/></p>
+        </td>
+        <td>
+          <span class="error-message" ng-show="myForm.correo.$error.email">Coreo inválido.</span><br>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p><label for="label_contrasena">Contraseña:</label></p>
+        </td>
+        <td>
+          <p><input id="label_contrasena" type="text" name="contrasena" ng-model="contrasena" size="35" placeholder="Contraseña" ng-minlength="3" ng-maxlength="15"/></p>
+        </td>
+        <td>
+          <span class="error-message" ng-show="myForm.contrasena.$error.minlength">
+            La contraseña debe tener más de 3 caracteres.
+          </span>
+          <span class="error-message" ng-show="myForm.contrasena.$error.maxlength">
+            La contraseña no puede exceder los 15 caracteres.
+          </span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p><label for="label_direccion">Fecha de nacimiento:</label></p>
+        </td>
+        <td>
+          <p>
+            <select ng-model="fdia" name="fdia" style="max-width:50%;"><option ng-repeat="x in dias">{{x}}</option></select>
+            <select ng-model="fmes" name="fmes" style="max-width:70%;"><option ng-repeat="x in meses">{{x}}</option></select>
+            <select ng-model="fano" name="fano" style="max-width:70%;"><option ng-repeat="x in anos">{{x}}</option></select>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center">
+          <input type ="submit" value="Regístrate" class="btn btn-primary btn-xl page-scroll" style="width:200px"/>
+        </td>
+      </tr>
+    </table>
+  </form>

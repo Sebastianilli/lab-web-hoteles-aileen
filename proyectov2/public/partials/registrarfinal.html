@@ -1,0 +1,31 @@
+<h1>{{ title }}</h1>
+  <hr/>
+    Ciudad: {{ ciudad[0] }}<br>
+    Nombre del hotel: {{ ciudad[5] }}<br>
+    Direccion del hotel: {{ ciudad[6] }}<br>
+    Fecha de entrada: {{ ciudad[1] }}<br>
+    Fecha de salida: {{ ciudad[2] }}<br>
+    Número de personas: {{ ciudad[3] }}<br>
+    Tipo de habitación: {{ ciudad[7] }}<br>
+    Número de habitaciones: {{ ciudad[4] }}<br>
+    Por: {{ ciudad[8] }} noches<br>
+    Costo sin impuestos: {{ costo | currency : symbol : fractionSize }}<br>
+    Impuestos: {{ impuesto }} <br>
+    Costo total: {{ costoTotal }}<br>
+  <hr/>
+  <h1>Elige una tarjeta</h1>
+  <table border="1" style="width:100%;text-align:center;background-color:white;" class="table table-bordered">
+    <tr>
+      <th>Titular</th>
+      <th>Número</th>
+      <th>Fecha de expedición</th>
+      <th>Elegir</th>
+    </tr>
+      <tr ng-repeat="tarjeta in tarjetas">
+        <td>{{ tarjeta.nombreTitular }}</td>
+        <td>{{ tarjeta.noTarjeta }}</td>
+        <td>{{ tarjeta.fExpedicion }}</td>
+        <td><input class="btn btn-primary btn-xl page-scroll" style="width:150px" type="submit" ng-click="buscar(ciudad[0], ciudad[5], ciudad[6], ciudad[1], ciudad[2], ciudad[3], ciudad[7],
+                                                    ciudad[4], ciudad[8], costoTotal, tarjeta.nombreTitular, tarjeta.noTarjeta, tarjeta.fExpedicion)" value="Reservar"/></td>
+      </tr>
+  </table>

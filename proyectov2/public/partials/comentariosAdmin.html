@@ -1,0 +1,35 @@
+<table align="center">
+  <tr>
+    <td>
+      <h1 align="center">{{ title }}</h1>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <hr/>
+    </td>
+  </tr>
+</table>
+
+<table border="1" style="width:100%;text-align:center;background-color:white;" class="table table-bordered">
+  <tr>
+    <th>Nombre del Hotel</th>
+    <th>Valoración</th>
+    <th>Comentario</th>
+    <th>
+      <span ng-if="var==true">
+        Borrar
+      </span>
+    </th>
+  </tr>
+  <tr ng-repeat="comentario in names.comentarios">
+    <td>{{ comentario.nombreHotel }}</td>
+    <td>{{ comentario.valoracion }}</td>
+    <td>{{ comentario.mensaje }}</td>
+    <td>
+      <span ng-if="var==true">
+        <input type ="submit" value="Borrar" ng-click="buscar(comentario._id)" class="btn btn-primary btn-xl page-scroll" style="width:150px;font-size:100%;"/>
+      </span>
+    </td>
+  </tr>
+</table>

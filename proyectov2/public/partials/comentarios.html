@@ -1,0 +1,83 @@
+<table align="center">
+  <tr>
+    <td>
+      <h1 align="center">{{ title }}</h1>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <hr/>
+    </td>
+  </tr>
+</table>
+<form novalidate class="simple-form">
+  <table align="center">
+    <tr>
+      <td>Ver por hotel en específico:</td>
+      <td><select ng-model="ciudad1"><option ng-repeat="x in names.ciudad">{{x}}</option></select></td>
+      <td><input type="submit" ng-click="buscar1(ciudad1)" value="Buscar" class="btn btn-primary btn-xl page-scroll" style="width:120px"/></td>
+    </tr>
+  </table>
+</form>
+
+<br>
+    <div ng-controller="ListCtrl as list">
+      <table class="table table-bordered">
+        <tr>
+          <th>
+              <a href="indexUsuario#/comentarios" ng-click="orderByField='nombreHotel'; reverseSort = !reverseSort">
+              Nombre del Hotel <span ng-show="orderByField == 'nombreHotel'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+              </a>
+            </th>
+            <th>
+              <a href="indexUsuario#/comentarios" ng-click="orderByField='valoracion'; reverseSort = !reverseSort">
+                Valoracion <span ng-show="orderByField == 'valoracion'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+              </a>
+            </th>
+            <th>
+              <a href="indexUsuario#/comentarios" ng-click="orderByField='mensaje'; reverseSort = !reverseSort">
+                Mensaje <span ng-show="orderByField == 'mensaje'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+              </a>
+            </th>
+        </tr>
+        
+        <tr ng-repeat="comentario in names.comentarios | orderBy:orderByField:reverseSort | limitTo:-5">
+          <td data-title="'First Name'" sortable="'nombreHotel'" filter="{ 'nombreHotel': 'text' }">
+            {{ comentario.nombreHotel }}
+            </td>
+          <td>{{ comentario.valoracion }}</td>
+          <td>{{ comentario.mensaje }}</td>
+        </tr>
+      </table>
+    </div>
+            
+    <div ng-controller="PostCtrl as post">
+        <form ng-submit="post.addMessage(post.newMessage, ciudad, numero)">
+          <table align="center">
+            <tr>
+              <td>
+                Sobre qué hotel estás dejando tu valoración?
+              </td>
+              <td>
+                <select ng-model="ciudad"><option ng-repeat="x in names.ciudad">{{x}}</option></select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Valoración:
+              </td>
+              <td>
+                <select ng-model="numero"><option ng-repeat="x in numeros">{{x}}</option></select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="text" ng-model="post.newMessage" style="width:400px;height:50px">
+              </td>
+              <td align="center">
+                <button type="submit" class="btn btn-primary btn-xl page-scroll" style="width:210px">Agregar valoración</button>
+              </td>
+            </tr>
+          </table>
+        </form>
+    </div>

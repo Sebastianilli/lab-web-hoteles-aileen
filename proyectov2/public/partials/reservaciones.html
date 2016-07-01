@@ -1,0 +1,78 @@
+<table align="center">
+  <tr>
+    <td>
+      <h1 align="center">{{ title }}</h1>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <hr/>
+    </td>
+  </tr>
+</table>
+
+<table border="1" style="width:100%;text-align:center;background-color:white;" class="table table-bordered">
+  <tr>
+    <th width="250">Id de reservación</th>
+    <th width="250">
+      <a href="indexAdmin#/reservaciones" ng-click="orderByField='ciudad'; reverseSort = !reverseSort">
+        Ciudad <span ng-show="orderByField == 'ciudad'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+      </a>
+    </th>
+    <th width="250">
+      <a href="indexAdmin#/reservaciones" ng-click="orderByField='nombreHotel'; reverseSort = !reverseSort">
+        Nombre del hotel <span ng-show="orderByField == 'nombreHotel'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+      </a>
+    </th>
+    <th width="250">Fecha de entrada</th>
+    <th width="250">Fecha de salida</th>
+    <th width="250">Número de habitaciones</th>
+    <th width="250">
+      <a href="indexAdmin#/reservaciones" ng-click="orderByField='tipoHab'; reverseSort = !reverseSort">
+        Tipo de habitación <span ng-show="orderByField == 'tipoHab'"><span ng-show="!reverseSort"></span><span ng-show="reverseSort"></span></span>
+      </a>
+    </th>
+    <th width="250">Costo</th>
+    <th width="250">Nombre del Titular</th>
+    <th width="250">Número de tarjeta</th>
+    <th width="250">Fecha de vencimiento</th>
+  </tr>
+
+  <tr ng-repeat="reservacion in reservaciones | orderBy:orderByField:reverseSort">
+    <td>{{ reservacion._id }}</td>
+    <td>{{ reservacion.ciudad }}</td>
+    <td>{{ reservacion.nombreHotel }}</td>
+    <td>{{ reservacion.fEntrada | date: 'mediumDate' }}</td>
+    <td>{{ reservacion.fSalida | date: 'mediumDate' }}</td>
+    <td>{{ reservacion.noHab }}</td>
+    <td>{{ reservacion.tipoHab }}</td>
+    <td>{{ reservacion.costo | currency : symbol : fractionSize }}</td>
+    <td>{{ reservacion.nombreTitular }}</td>
+    <td>{{ reservacion.noTarjeta }}</td>
+    <td>{{ reservacion.fExpedicion | date: 'mediumDate' }}</td>
+  </tr>
+</table>
+<br><br><br>
+<span ng-if="var==true">
+  <form action ="/deleteReservacion" method="post">
+    <table align="center">
+      <tr>
+        <td width="100" height="50" align="center">
+          <label for="label_id"> Introduzca el número de reservación para eliminarla:</label>
+        </td>
+      </tr>
+      <tr>
+        <td width="100" height="50" align="center">
+          <input id="label_id" type="text" name="id" style="height:30px;width:100;" placeholder="Número de reservación"/>  
+        </td>
+      </tr>
+      <tr>
+        <td width="100" height="50" align="center">
+          <input type ="submit" value="Borrar" class="btn btn-primary btn-xl page-scroll" style="width:150px"/> 
+        </td>
+        <td>
+        </td>
+      </tr>
+    </table>
+  </form>
+</span>

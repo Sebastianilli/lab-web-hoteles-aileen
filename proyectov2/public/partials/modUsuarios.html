@@ -1,0 +1,82 @@
+<style>   
+  .error-message {color: red;}    
+  input.ng-dirty.ng-invalid {border-color: red;}  
+</style>
+<table align="center">
+  <tr>
+    <td>
+      <h1 align="center">{{ title }}</h1>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <hr/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p align="center"> Ingresa los datos que se te piden a continuación </p>
+    </td>
+  </tr>
+</table>
+
+<p align="center">{{ mensaje }}</p>
+<form action ="/updateUser" method="post" name="myForm">
+<table align="center">
+    <tr>
+      <td><input name="id" size="35" value="{{ datos[0]._id }}" type="hidden"/></td>
+    </tr>
+    <tr>
+      <td>Correo</td>
+      <td><input type="email" name="correo" style="height:30px;width:100;" value="{{ datos[0].correo }}"/></td>
+      <td>
+        <span class="error-message" ng-show="myForm.correo.$error.email">Coreo inválido.</span><br>
+      </td>
+    </tr>
+    <tr>
+      <th>Nombre</th>
+      <td><input type="text" name="nombre" style="height:30px;width:100;" value="{{ datos[0].nombre }}"/></td>
+    </tr>
+    <tr>
+      <th>Apellido paterno</th>
+      <td><input type="text" name="aPaterno" style="height:30px;width:100;" value="{{ datos[0].aPaterno }}"/></td>
+    </tr>
+    <tr>
+      <th>Apellido materno</th>
+      <td><input type="text" name="aMaterno" style="height:30px;width:100;" value="{{ datos[0].aMaterno }}"/></td>
+    </tr>
+    <tr>
+      <th>Fecha de nacimiento</th>
+      <td><input type="text" name="fNacimiento" style="height:30px;width:100;" value="{{ datos[0].fNacimiento }}"/></td>
+    </tr>
+    <tr>
+      <td>Contraseña</td>
+      <td>
+        <input type="password" value="{{ datos[0].contrasena }}" name="contrasena" style="height:30px;width:100;" ng-minlength="3" ng-maxlength="15"/>
+      </td>
+      <td>
+        <p>
+          <span class="error-message" ng-show="myForm.contrasena.$error.minlength">
+            La contraseña debe tener más de 3 caracteres.
+          </span>
+          <span class="error-message" ng-show="myForm.contrasena.$error.maxlength">
+            La contraseña no puede exceder los 15 caracteres.
+          </span>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <input type ="submit" value="Guardar" class="btn btn-primary btn-xl page-scroll" style="width:200px"/> 
+      </td>
+    </tr>
+    <tr>
+      <td><br><br>
+        <a href="indexUsuario#/altaTarjetas" class="btn btn-default btn-xl sr-button" style="width:200px">Agregar Tarjetas</a>
+      </td>
+      <td><br><br>
+        <a href="indexUsuario#/listaTarjetas" class="btn btn-default btn-xl sr-button" style="width:200px">Modificar Tarjetas</a>
+      </td>
+    </tr>
+  </table>
+</form>

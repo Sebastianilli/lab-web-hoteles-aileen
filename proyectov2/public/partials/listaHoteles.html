@@ -1,0 +1,55 @@
+<table align="center">
+  <tr>
+    <td>
+      <h1 align="center">{{ title }}</h1>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <hr/>
+    </td>
+  </tr>
+</table>
+
+<table border="1" style="width:100%;text-align:center;background-color:white;" class="table table-bordered">
+  <tr>
+    <th>Id</th>
+    <th>Nombre del Hotel</th>
+    <th>Ciudad</th>
+    <th>Dirección</th>
+    <th>Habitaciones simples <br> Reservadas / Disponibles</th>
+    <th>Habitaciones dobles <br> Reservadas / Disponibles</th>
+    <th>Habitaciones premier <br> Reservadas / Disponibles</th>
+  </tr>
+  <tr ng-repeat="dato in datos">
+    <td>{{ dato._id }}</td>
+    <td>{{ dato.nombre }}</td>
+    <td>{{ dato.ciudad }}</td>
+    <td>{{ dato.direccion }}</td>
+    <td>{{ dato.HabitacionesSimpleReservedas}} / {{ dato.noHabitacionesSimple }}</td>
+    <td>{{ dato.HabitacionesDobleReservedas}} / {{ dato.noHabitacionesDoble }}</td>
+    <td>{{ dato.HabitacionesPremierReservedas}} / {{ dato.noHabitacionesPremier }}</td>
+  </tr>
+</table>
+<br><br><br>
+<span ng-if="var==true">
+  <form action ="/deleteHotel" method="post">
+    <table align="center">
+      <tr>
+        <td width="100" height="50" align="center">
+          <label for="label_id"> Introduzca el id del hotel para eliminarlo:</label>
+        </td>
+      </tr>
+      <tr>
+        <td width="100" height="50" align="center">
+          <input id="label_id" type="text" name="id" style="height:30px;width:100;" placeholder="Id"/>  
+        </td>
+      </tr>
+      <tr>
+        <td width="100" height="50" align="center">
+          <input type ="submit" value="Borrar" class="btn btn-primary btn-xl page-scroll" style="width:150px"/> 
+        </td>
+      </tr>
+    </table>
+  </form>
+</span>

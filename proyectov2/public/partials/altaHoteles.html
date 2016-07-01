@@ -1,0 +1,54 @@
+<table align="center">
+  <tr>
+    <td>
+      <h1 align="center">{{ title }}</h1>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <hr/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p align="center"> Ingresa los datos que se te piden a continuación </p>
+    </td>
+  </tr>
+</table>
+  <form action ="/sigueHoteles" method="post">
+    <table align="center">
+      <tr>
+        <td><label for="label_nombre">Nombre del hotel:</label></td>
+        <td><input id="label_nombre" type="text" name="nombre" style="height:30px;width:100;" placeholder="Nombre del hotel"/></td>
+      </tr>
+      <tr>
+        <td><label for="label_ciudad">Ciudad:</label></td>
+        <td><input id="label_ciudad" type="text" name="ciudad" style="height:30px;width:100;" placeholder="Ciudad"/></td>
+      </tr>
+      <tr>
+        <td><label for="label_direccion">Direccion:</label></td>
+        <td><input id="label_direccion" type="text" name="direccion" style="height:30px;width:100;" placeholder="Direccion"/></td>
+      </tr>
+      <tr>
+        <td><label for="label_simple">Número de habitaciones simples (1 persona):</label></td>
+        <td><input id="label_simple" type="text" name="simple" style="height:30px;width:100;" placeholder="Habitaciones Simples"/></td>
+      </tr>
+      <tr>
+        <td><label for="label_doble">Número de habitaciones dobles (2 personas):</label></td>
+        <td><input id="label_doble" type="text" name="doble" style="height:30px;width:100;" placeholder="Habitaciones Dobles"/></td>
+      </tr>
+      <tr>
+        <td><label for="label_premier">Número de habitaciones Premier (4 personas):</label></td>
+        <td><input id="label_premier" type="text" name="premier" style="height:30px;width:100;" placeholder="Habitaciones Premier"/></td>
+      </tr>
+      <tr>
+        <td><label for="label_imagen">Imagen:</label></td>
+        <td><input id="label_imagen" type="text" name="imagen" style="height:30px;width:100;" placeholder="Imagen"/></td>
+      </tr>
+      <tr>
+        <td colspan="2" align="center">
+          <input type ="submit" value="Añadir" class="btn btn-primary btn-xl page-scroll"/>
+        </td>
+      </tr>
+    </table>
+  </form>

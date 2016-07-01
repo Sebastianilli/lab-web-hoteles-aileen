@@ -1,0 +1,70 @@
+<style>   
+  .error-message {color: red;}    
+  input.ng-dirty.ng-invalid {border-color: red;}  
+</style>
+
+<table align="center">
+  <tr>
+    <td>
+      <h1 align="center">{{ title }}</h1>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <hr/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p align="center"> Ingresa los datos que se te piden a continuación </p>
+    </td>
+  </tr>
+</table>
+<form action ="/sigueAdmin" method="post" name="myForm">
+  <table align="center">
+    <tr>
+      <td><label for="label_nombre"> Nombre:</label></td>
+      <td><input id="label_nombre" type="text" name="nombre" style="height:30px;width:100;" placeholder="Nombre"/></td>
+    </tr>
+    <tr>
+      <td><label for="label_aPaterno">Apellido Paterno:</label></td>
+      <td><input id="label_aPaterno" type="text" name="aPaterno" style="height:30px;width:100;" placeholder="Apellido Paterno"/></td>
+    </tr>
+    <tr>
+      <td><label for="label_aMaterno">Apellido Materno:</label></td>
+      <td><input id="label_aMaterno" type="text" name="aMaterno" style="height:30px;width:100;" placeholder="Apellido Materno"/></td>
+    </tr>
+    <tr>
+      <td><label for="label_correo">Correo:</label></td>
+      <td><input id="label_correo" type="email" name="correo" ng-model="correo" style="height:30px;width:100;" placeholder="Correo"/></td>
+      <td>
+        <span class="error-message" ng-show="myForm.correo.$error.email">Coreo inválido.</span><br>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="label_contrasena">Contraseña:</label></td>
+      <td>
+        <input id="label_contrasena" type="text" name="contrasena" ng-model="contrasena" style="height:30px;width:100;" placeholder="Contraseña" ng-minlength="3" ng-maxlength="15"/>
+      </td>
+      <td>
+        <p>
+          <span class="error-message" ng-show="myForm.contrasena.$error.minlength">
+            La contraseña debe tener más de 3 caracteres.
+          </span>
+          <span class="error-message" ng-show="myForm.contrasena.$error.maxlength">
+            La contraseña no puede exceder los 15 caracteres.
+          </span>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="label_rol">Rol:</label></td>
+      <td><select ng-model="rol" name="rol" style="max-width:90%;"><option ng-repeat="x in roles">{{x}}</option></select></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <input type ="submit" value="Añadir" class="btn btn-primary btn-xl page-scroll"/>
+      </td>
+    </tr>
+  </table>
+</form>

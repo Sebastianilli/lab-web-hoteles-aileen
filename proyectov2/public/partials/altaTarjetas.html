@@ -1,0 +1,52 @@
+<table align="center">
+  <tr>
+    <td>
+      <h1 align="center">{{ title }}</h1>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <hr/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p align="center"> Ingresa los datos que se te piden a continuación </p>
+    </td>
+  </tr>
+</table>
+
+<form action ="/sigueTarjeta" method="post">
+  <table align="center">
+    <tr>
+      <td width="100" height="50">
+        <label for="label_nombreTitular"> Nombre del Titular:</label>
+      </td>
+      <td width="100" height="50">
+        <input id="label_nombreTitular" type="text" name="nombreTitular" style="height:30px;width:100;" placeholder="Nombre del Titular"/>  
+      </td>
+    </tr>
+    <tr>
+      <td width="100" height="50">
+        <label for="label_noTarjeta">Número de Tarjeta:</label>
+      </td>
+      <td width="100" height="50">
+        <input id="label_noTarjeta" type="text" name="noTarjeta" style="height:30px;width:100;" placeholder="Número de Tarjeta"/>
+      </td>
+    </tr>
+    <tr>
+      <td width="100" height="50">
+        <label for="label_fExpedicion">Fecha de Vencimiento:</label>
+      </td>
+      <td width="100" height="50" colspan="2">
+        <select name ="fmes" style="max-width:60%;"><option ng-repeat="x in meses">{{x}}</option></select>
+        <select name ="fano" style="max-width:30%;"><option ng-repeat="x in ano">{{x}}</option></select>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <input type ="submit" value="Añadir" class="btn btn-primary btn-xl page-scroll" style="width:200px"/> 
+      </td>
+    </tr>
+  </table>
+</form>

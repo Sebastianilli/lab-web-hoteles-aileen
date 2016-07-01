@@ -1,0 +1,80 @@
+<table align="center">
+  <tr>
+    <td>
+      <h1 align="center">{{ title }}</h1>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <hr/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p align="center"> Ingresa los datos que se te piden a continuación </p>
+    </td>
+  </tr>
+</table>
+
+<form novalidate class="simple-form">
+  <table align="center">
+        <tr>
+            <td width="200" height="50">
+                Código de Reservación:
+            </td>
+            <td width="300" height="50">
+                <input id="label_id" type="text" ng-model="codigoReservacion" style="height:30px;width:250px;" placeholder="Codigo de Reservacion"/>
+            </td width="300" height="50">
+            <td>
+                <input type ="submit" ng-click="buscar(codigoReservacion)" value="Consultar" class="btn btn-primary btn-xl page-scroll" style="width:200px"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<table border="1" style="width:100%;text-align:center;background-color:white;" class="table table-bordered">
+    <tr>
+        <th width="200" height="50">{{ msg1 }}</th>
+        <td>{{ datos[0].nombreHotel }}</td>
+    </tr>
+    <tr>
+        <th>{{ msg2 }}</th>
+        <td>{{ datos[0].direccionHotel }}</td>
+    </tr>
+    <tr>
+        <th>{{ msg3 }}</th>
+        <td>{{ datos[0].ciudad }}</td>
+    </tr>
+    <tr>
+        <th>{{ msg4 }}</th>
+        <td>{{ datos[0].tipoHab }}</td>
+    </tr>
+    <tr>
+        <th>{{ msg5 }}</th>
+        <td>{{ datos[0].noHab }}</td>
+    </tr>
+    <tr>
+        <th>{{ msg6 }}</th>
+        <td>{{ datos[0].fEntrada }}</td>
+    </tr>
+    <tr>
+        <th>{{ msg7 }}</th>
+        <td>{{ datos[0].fSalida }}</td>
+    </tr>
+    <tr>
+        <th>{{ msg8 }}</th>
+        <td>{{ datos[0].costo | currency : symbol : fractionSize }}</td>
+    </tr>
+    <tr>
+        <th>{{ msg9 }}</th>
+        <td>{{ datos[0].nombreTitular }}</td>
+    </tr>
+    <tr>
+        <th>{{ msg10 }}</th>
+        <td>{{ datos[0].noTarjeta }}</td>
+    </tr>
+    <tr>
+        <th>{{ msg11 }}</th>
+        <td>{{ datos[0].fExpedicion }}</td>
+    </tr>
+</table>

@@ -1,0 +1,54 @@
+<style>   
+  .error-message {color: red;}    
+  input.ng-dirty.ng-invalid {border-color: red;}  
+</style>
+
+<h1 align="center">{{ title }}</h1>
+  <hr/>
+    <p align="center"> Ingresa los datos que se te piden a continuación </p>
+    <form name="myform" novalidate>
+      <table align="center">
+        <tr>
+          <td width="100" height="50">
+          <label for="label_id"> Usuario:</label>
+          </td>
+          <td>
+            <input type="text" name="correo" ng-model="correo" ng-required="true" placeholder="Correo de Usuario" size="35"/>
+            <span class="error-message" ng-show="myform.correo.$dirty && myform.correo.$error.required">
+              El campo Correo es obligatorio
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td width="100" height="50">
+            <label for="label_id"> Contraseña:</label>
+          </td>
+          <td>
+            <input type="password" name="contrasena" ng-model="contrasena" ng-required="true" placeholder="contraseña" size="35"/>    
+            <span class="error-message" ng-show="myform.contrasena.$dirty && myform.correo.$error.required">
+              El campo Contraseña es obligatorio
+            </span>
+          </td>
+        </tr>
+        <tr width="100" height="50">
+          <td colspan="2" align="center">
+            {{ mensaje }}
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <input type ="submit" value="Entrar" ng-click="login(correo, contrasena)"
+            class="btn btn-primary btn-xl page-scroll" style="width:250px"/>
+          </td>
+        </tr>
+        <!--
+        <tr>
+          <td colspan="2" align="center">
+            <br>
+            <input type ="submit" value="Entrar con Facebook" ng-click="entrarFB()"
+            class="btn btn-default btn-xl sr-button" style="width:250px"/>
+          </td>
+        </tr>
+        -->
+      </table>
+    </form>

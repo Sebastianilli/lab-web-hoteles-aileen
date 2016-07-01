@@ -1,0 +1,120 @@
+<style>
+  .floatedTable {
+    float:left;
+  }
+  .inlineTable {
+    display: inline-block;
+  }
+  .wrap {
+    display: table;
+    width: 100%;
+    height: 100%; /* need to set height for this to work in Chrome */
+  }
+  .cell-wrap {
+  display: table-cell;
+  vertical-align: top;
+  height: 100%;
+}
+.cell-wrap.left {
+  width: 70%;
+  padding-right: 10px;  /* if you need some whitespace */
+}
+</style>
+<table align="center">
+  <tr>
+    <td>
+      <h1 align="center">{{ title }}</h1>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <hr/>
+    </td>
+  </tr>
+</table>
+<p> Ingresa los datos que se te piden a continuación </p>
+    
+      <table cellspacing="0" width="30%" align="left">
+        <form novalidate class="simple-form">
+          <tr>
+            <td width="100" height="50">
+              <label for="label_ciudad"> Ciudad:</label>
+            </td>
+            <td width="100" height="50">
+              <select name="ciudad" ng-model="ciudad"><option ng-repeat="x in users.datos" required>{{x}}</option></select>
+            </td>
+          </tr>
+          <tr>
+            <td width="100" height="50">
+              <label for="label_fEntrada">Fecha de Entrada:</label>
+            </td>
+            <td width="100" height="50" colspan="2">
+              <select ng-model="fEdia" style="max-width:30%;"><option ng-repeat="x in dias">{{x}}</option></select>
+              <select ng-model="fEmes" style="max-width:60%;"><option ng-repeat="x in meses">{{x}}</option></select>
+            </td>
+          </tr>
+          <tr>
+            <td width="100" height="50">
+              <label for="label_fSalida">Fecha de Salida:</label>
+            </td>
+            <td width="100" height="50">
+              <select ng-model="fSdia" style="max-width:30%;"><option ng-repeat="x in dias">{{x}}</option></select>
+              <select ng-model="fSmes" style="max-width:60%;"><option ng-repeat="x in meses">{{x}}</option></select>            </td>
+          </tr>
+          <tr>
+            <td width="100" height="50">
+              <label for="label_nPersonas">Número de Personas:</label>
+            </td>
+            <td width="100" height="50">
+              <select ng-model="nPersonas"><option ng-repeat="x in personas">{{x}}</option></select>
+            </td>
+          </tr>
+          <tr>
+            <td width="100" height="50">
+              <label for="label_nHabitaciones">Número de Habitaciones:</label>
+            </td>
+            <td width="100" height="50">
+              <input id="label_nHabitaciones" type="text" ng-model="nHabitaciones" style="height:30px;width:100;" placeholder="Número de Habitaciones"/>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" align="center">
+              <input type="submit" ng-click="buscar(ciudad, fEdia, fEmes, fSdia, fSmes, nPersonas, nHabitaciones)" value="Ver disponibilidad"
+                    class="btn btn-primary btn-xl page-scroll" style="width:200px"/>
+            </td>
+          </tr>
+        </form>
+      </table>
+
+      <table border="1" style="width:70%;text-align:center;background-color:white;" class="table table-bordered" width="70%" align="right" class="rowB">
+        <tr>
+          <td>
+            <div ng-repeat="dato in datos">
+              <br><br>
+              <img ng-src="{{dato.imagen}}" width="300">
+              <br><br><br>
+            </div>
+          </td>
+          <td>
+            <div ng-repeat="dato in datos">
+              <form novalidate class="simple-form">
+                Nombre del Hotel: {{dato.nombre}}<br>
+                Valoración: {{valoraciones[$index]}}/10<br>
+                Ciudad: {{dato.ciudad}}<br>
+                Dirección: {{dato.direccion}}<br>
+                Tipo de habitación: {{habitacion}}<br>
+                Del: {{fEntrada}} al: {{fSalida}}<br>
+                Por: {{noches}} noches.<br>
+                Número de habitaciones: {{nHabitaciones}}<br>
+                Número de personas: {{nPersonas}}<br>
+                Costo sin impuestos: {{costo | currency : symbol : fractionSize}}<br>
+                <p align="right">
+                <input type="submit" ng-click="reservar(ciudad, fEntrada, fSalida, nPersonas, nHabitaciones, dato.nombre, dato.direccion,
+                                            habitacion, noches, costo)" value="Reservar" class="btn btn-primary btn-xl page-scroll" style="width:150px"/>
+                 </p>
+              </form>
+              <hr>
+            </div>
+          </td>
+        </tr>
+      </table>
